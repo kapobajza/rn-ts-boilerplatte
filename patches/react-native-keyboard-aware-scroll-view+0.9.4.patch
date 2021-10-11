@@ -1,0 +1,46 @@
+diff --git a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
+index 3d94b82..acc7bf6 100644
+--- a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
++++ b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
+@@ -273,12 +273,12 @@ function KeyboardAwareHOC(
+ 
+     scrollToPosition = (x: number, y: number, animated: boolean = true) => {
+       const responder = this.getScrollResponder()
+-      responder && responder.scrollResponderScrollTo({ x, y, animated })
++      responder && responder.scrollTo({ x, y, animated })
+     }
+ 
+     scrollToEnd = (animated?: boolean = true) => {
+       const responder = this.getScrollResponder()
+-      responder && responder.scrollResponderScrollToEnd({ animated })
++      responder && responder.scrollToEnd({ animated })
+     }
+ 
+     scrollForExtraHeightOnAndroid = (extraHeight: number) => {
+@@ -371,7 +371,7 @@ function KeyboardAwareHOC(
+           keyboardSpace -= _KAM_DEFAULT_TAB_BAR_HEIGHT
+         }
+         this.setState({ keyboardSpace })
+-        const currentlyFocusedField =  TextInput.State.currentlyFocusedInput ? findNodeHandle(TextInput.State.currentlyFocusedInput()) : TextInput.State.currentlyFocusedField()
++        const currentlyFocusedField = TextInput.State.currentlyFocusedInput ? findNodeHandle(TextInput.State.currentlyFocusedInput()) : TextInput.State.currentlyFocusedField()
+         const responder = this.getScrollResponder()
+         if (!currentlyFocusedField || !responder) {
+           return
+@@ -416,7 +416,7 @@ function KeyboardAwareHOC(
+                     ) {
+                       this.scrollForExtraHeightOnAndroid(
+                         totalExtraHeight -
+-                          (keyboardPosition - textInputBottomPosition)
++                        (keyboardPosition - textInputBottomPosition)
+                       )
+                     }
+                   }
+@@ -494,7 +494,7 @@ function KeyboardAwareHOC(
+     }
+ 
+     update = () => {
+-      const currentlyFocusedField =  TextInput.State.currentlyFocusedInput ? findNodeHandle(TextInput.State.currentlyFocusedInput()) : TextInput.State.currentlyFocusedField()
++      const currentlyFocusedField = TextInput.State.currentlyFocusedInput ? findNodeHandle(TextInput.State.currentlyFocusedInput()) : TextInput.State.currentlyFocusedField()
+       const responder = this.getScrollResponder()
+ 
+       if (!currentlyFocusedField || !responder) {
